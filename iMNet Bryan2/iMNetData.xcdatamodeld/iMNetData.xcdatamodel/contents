@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Contacts" representedClassName="Contacts" syncable="YES">
+        <attribute name="address16" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address64" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAvailable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contactLocation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="locationContact" inverseEntity="Location" syncable="YES"/>
+        <relationship name="contactMessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Messages" inverseName="messageFromContact" inverseEntity="Messages" syncable="YES"/>
+        <relationship name="contactSentImage" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Images" inverseName="imageFromContact" inverseEntity="Images" syncable="YES"/>
+    </entity>
+    <entity name="Images" representedClassName="Images" syncable="YES">
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageSender64" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="imageFromContact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Contacts" inverseName="contactSentImage" inverseEntity="Contacts" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES">
+        <attribute name="locationDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationLatitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locationTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="locationContact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Contacts" inverseName="contactLocation" inverseEntity="Contacts" syncable="YES"/>
+    </entity>
+    <entity name="Messages" representedClassName="Messages" syncable="YES">
+        <attribute name="messageContents" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="messageReceived" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="messageFromContact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Contacts" inverseName="contactMessages" inverseEntity="Contacts" syncable="YES"/>
+    </entity>
+    <entity name="OwnSettings" representedClassName="OwnSettings" syncable="YES">
+        <attribute name="atCommand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="atSetting" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Contacts" positionX="160" positionY="153" width="128" height="150"/>
+        <element name="Images" positionX="-2" positionY="243" width="128" height="105"/>
+        <element name="Location" positionX="-2" positionY="108" width="128" height="120"/>
+        <element name="Messages" positionX="322" positionY="126" width="128" height="105"/>
+        <element name="OwnSettings" positionX="324" positionY="297" width="128" height="75"/>
+    </elements>
+</model>
